@@ -63,7 +63,6 @@
     <button onclick="generateStory()">Générer une Histoire</button>
     <div id="story">Cliquez sur le bouton pour découvrir votre histoire !</div>
 
-<!--
     <script>
         async function fetchFileContent(file) {
             const response = await fetch(file);
@@ -92,39 +91,7 @@
             document.getElementById('story').innerText = story.trim();
         }
     </script>
-    -->
-    
-     <script>
-        async function fetchStory() {
-            const response = await fetch('story.json');
-            const data = await response.json();
-            return data;
-        }
 
-        async function generateStory() {
-            const storyData = await fetchStory();
-            const pages = Object.values(storyData);
-            const story = pages.map(page => page.join('\n')).join('\n\n');
-            document.getElementById('story').innerText = story;
-        }
-
-        $(document).ready(function(){
-            $('#generateButton').click(function() {
-                generateStory();
-            });
-
-            $('.carousel').slick({
-                dots: false,
-                infinite: true,
-                speed: 1500,
-                slidesToShow: 1,
-                adaptiveHeight: true,
-                autoplay: true,
-                arrows: false,
-                autoplaySpeed: 10000 // 5000 ms = 5 seconds
-            });
-        });
-    </script>
     
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>

@@ -1,0 +1,17 @@
+{
+  "page1": [
+    "Première ligne de la page 1",
+    "Deuxième ligne de la page 1",
+    "Troisième ligne de la page 1"
+  ],
+  "page2": [
+    "Première ligne de la page 2",
+    "Deuxième ligne de la page 2",
+    "Troisième ligne de la page 2"
+  ]
+  "page3": [
+    "Première ligne de la page 3",
+    "Deuxième ligne de la page 3",
+    "Troisième ligne de la page 3"
+  ]
+}

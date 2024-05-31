@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur d'Histoire Aléatoire</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #4a90e2;
+        }
+        button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #357ab7;
+        }
+        #story {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(10, 10, 10, 0.5);
+            max-width: 800px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+        }
+        .carousel {
+            max-width: 500px;
+        }
+        .carousel img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Générateur d'Histoire Aléatoire</h1>
+    <div class="carousel">
+        <img src="images/illus0.webp" alt="Image 1">
+        <img src="images/illus1.webp" alt="Image 2">
+        <img src="images/illus2.webp" alt="Image 3">
+        <img src="images/illus3.webp" alt="Image 4">
+    </div>
+    <button onclick="generateStory()">Générer une Histoire</button>
+    <div id="story">Cliquez sur le bouton pour découvrir votre histoire !</div>
+
+<!--
+    <script>
+        async function fetchFileContent(file) {
+            const response = await fetch(file);
+            const text = await response.text();
+            return text.split('\n').filter(line => line.trim() !== '');
+        }
+
+        function getRandomSentence(sentences) {
+            const randomIndex = Math.floor(Math.random() * sentences.length);
+            return sentences[randomIndex].trim();
+        }
+
+        async function generateStory() {
+            const files = [
+                'pages/page1.txt', 'pages/page2.txt', 'pages/page3.txt', 'pages/page4.txt', 'pages/page5.txt'
+            ];
+
+            let story = '';
+
+            for (const file of files) {
+                const sentences = await fetchFileContent(file);
+                const randomSentence = getRandomSentence(sentences);
+                story += randomSentence + ' ';
+            }
+
+            document.getElementById('story').innerText = story.trim();
+        }
+    </script>
+    -->
+    
+     <script>
+        async function fetchStory() {
+            const response = await fetch('story.json');
+            const data = await response.json();
+            return data;
+        }
+
+        async function generateStory() {
+            const storyData = await fetchStory();
+            const pages = Object.values(storyData);
+            const story = pages.map(page => page.join('\n')).join('\n\n');
+            document.getElementById('story').innerText = story;
+        }
+
+        $(document).ready(function(){
+            $('#generateButton').click(function() {
+                generateStory();
+            });
+
+            $('.carousel').slick({
+                dots: false,
+                infinite: true,
+                speed: 1500,
+                slidesToShow: 1,
+                adaptiveHeight: true,
+                autoplay: true,
+                arrows: false,
+                autoplaySpeed: 10000 // 5000 ms = 5 seconds
+            });
+        });
+    </script>
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.carousel').slick({
+                dots: false,
+                infinite: true,
+                speed: 1500,
+                slidesToShow: 1,
+                adaptiveHeight: true,
+                autoplay: true,
+                arrows: false,
+                autoplaySpeed: 10000 // 5000 ms = 5 seconds
+            });
+        });
+    </script>
+</body>
+</html>

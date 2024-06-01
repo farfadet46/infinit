@@ -4,3 +4,24 @@ un vagabond,
 un chien,
 un chat,
 un renard,
+un marchand mystérieux,
+un roi
+un magicien
+un prince
+un chevalier
+un forgeron
+un fermier
+un pêcheur
+un berger
+un soldat
+un pirate
+un sorcier
+un dragon
+un géant
+un nain
+un elfe
+un loup-garou
+un chasseur
+un bûcheron
+un inventeur
+un alchimiste
